@@ -48,10 +48,12 @@ public class MainActivity extends Activity implements Card.OnCardMoveListener {
     @Override
     public void onCardMoving(int position, float progress) {
         for (int i = 0; i < cards.size(); i ++) {
-            if (data.isEmpty()) {
-                cards.get(i).updateProgress(progress);
-            } else {
-                if (i != 0 && i != position) cards.get(i).updateProgress(progress);
+            if (i != cards.size() - 1 && i != position) {
+                if (data.isEmpty()) {
+                    cards.get(i).updateProgress(progress);
+                } else {
+                    if (i != 0) cards.get(i).updateProgress(progress);
+                }
             }
         }
     }
